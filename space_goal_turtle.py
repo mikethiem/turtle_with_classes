@@ -4,6 +4,25 @@ import turtle
 wn = turtle.Screen()
 wn.bgcolor("red")
 wn.title("turtle game with classes")
+class Border(turtle.Turtle):
+    def __init__(self):
+        turtle.Turtle.__init__(self)
+        self.penup()
+        self.hideturtle()
+    # speed with () is a method and 0 means no speed no animate just draw
+        self.speed(0)
+        self.color('white')
+        self.pensize(5)
+
+    def draw_border(self):
+        self.penup()
+        self.goto(-300, -300)
+        self.pendown()
+        self.goto(-300, 300)
+        self.goto(300, 300)
+        self.goto(300, -300)
+        self.goto(-300, -300)
+
 
 class Player(turtle.Turtle):
 
@@ -39,7 +58,11 @@ class Player(turtle.Turtle):
 # player is no the thing that self refers to
 # player will get its attributes, ( features, traits, properties, characteristics from capital P  Player class
 player = Player()
+border = Border()
 # player is an insance of the Player class
+
+# draw the border
+border.draw_border()
 
 # set keyboard binding
 turtle.listen()
@@ -50,4 +73,5 @@ turtle.onkey(player.decreasespeed, "Down")
 
 # Main Loop
 while True:
+
     player.move()
